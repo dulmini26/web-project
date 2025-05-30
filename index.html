@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+<title>Text Editing Application</title>
+<style>
+  body {
+    font-family: Arial;
+    margin: 10px;
+  }
+  .toolbar {
+    background: black;
+    padding: 5px;
+   
+  }
+  .toolbar button, .toolbar select {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  
+  #editor {
+    margin-top: 10px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    outline: none;
+    min-height: 350px;
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="format('bold')" title="Bold"><b>B</b></button>
+  <button onclick="format('underline')" title="Underline"><u>U</u></button>
+  <button onclick="format('italic')" title="Italic"><i>I</i></button>
+  <input type="color" id="colorPicker" title="Font Color" onchange="format('foreColor', this.value)" />
+  <button onclick="format('justifyLeft')" title="Align Left">&#8676;</button>
+  <button onclick="format('justifyCenter')" title="Align Center">&#8596;</button>
+  <button onclick="format('justifyRight')" title="Align Right">&#8677;</button>
+  <button onclick="format('justifyFull')" title="Justify">&#8644;</button>
+  <button onclick="format('undo')" title="Undo">&#8630;</button>
+  <button onclick="format('redo')" title="Redo">&#8631;</button>
+</div>
+
+<div id="editor" contenteditable="true" spellcheck="true" aria-label="Text editor"></div>
+
+<script>
+  function format(command, value = null) {
+    document.execCommand(command, false, value);
+    document.getElementById('editor').focus();
+  }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+  
